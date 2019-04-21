@@ -1,123 +1,273 @@
-@import url("https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext");
-
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext');
 /* Variables */
-
+//Colors
 $color-light: #fff;
 $color-dark: #444;
+$color-red: #ff0000;
+$color-back: #292121;
+$color-border: #221919;
 
-$font-logo: "Sacramento", cursive;
-$font-header: "Oswald", sans-serif;
-$font-text: "Source Sans Pro", sans-serif;
+//Fonts
+$font-logo: 'Montserrat', cursive;
+$font-header: 'Oswald', sans-serif;
+$font-text: 'Source Sans Pro', sans-serif;
 
 /* Global */
-
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  background: $color-light;
-  font-family: $font-text;
-  color: $color-dark;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 1.7;
+	margin: 0;
+	background: #0d0b0b;
+	font-family: $font-text;
+	color: $color-light;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 1.7;
 }
 
 .container {
-  max-width: 1140px;
-  margin: 0 auto;
+	max-width: 1140px;
+	margin: 0 auto;
 }
 
 .section-title {
-  font-size: 22px;
-  text-transform: uppercase;
-  font-family: $font-header;
-  font-weight: 600;
-  span {
-    text-transform: none;
-    font-weight: 400;
-    color: lighten($color-dark, 20%);
-  }
+	font-size: 22px;
+	text-transform: uppercase;
+	font-family: $font-header;
+	font-weight: 600;
+	letter-spacing: 1px;
+	color: $color-red;
+	span {
+		text-transform: none;
+		font-weight: 400;
+		color: lighten($color-dark, 20%);
+	}
+}
+
+a {
+	letter-spacing: 1px;
+	text-decoration: none;
+	color: $color-light;
+	&:hover {
+		color: $color-red;
+	}
+	&.active {
+		color: $color-red;
+	}
 }
 
 /* Layout */
-
 .wrapper {
-  display: flex;
-  margin-left: 10px;
+	display: flex;
+	margin-left: 10px;
+	margin-bottom: 20px;
 }
 
 .sidebar {
-  flex: 1 0 0;
+	flex: 1 0 0;
 }
 
 .posts {
-  flex: 2 0 0;
+	flex: 2 0 0;
+	position: relative;
+	overflow: hidden;
 }
 
 .sidebar,
 .posts {
-  background: $color-light;
-  margin-right: 10px;
-  padding: 40px;
-  border: 1px solid $color-dark;
-  border-radius: 5px;
+	background: $color-back;
+	margin-right: 10px;
+	padding: 40px;
+	border: 2px solid $color-border;
+	border-radius: 5px;
 }
 
 /* Logo */
-
-.logo {
-  font-family: $font-logo;
-  font-weight: 400;
-  font-size: 104px;
-  line-height: 1;
-  text-align: center;
+.head {
+	position: relative;
+	background-image: url(../images/cinema-dark-display-8158.jpg);
+	background-position: center center;
+	background-size: cover;
+	height: 50vh;
+	margin-bottom: 5px;
+	.logo {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		margin: 0;
+		font-family: $font-logo;
+		font-weight: 800;
+		font-size: 4.5em;
+		line-height: 1.2;
+		letter-spacing: 3px;
+		text-align: center;
+		color: $color-red;
+	}
 }
 
 /* Lists */
-
 .list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  .active {
-    font-weight: bold;
-  }
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	.active {
+		font-weight: bold;
+	}
 }
 
 .list-horizontal {
-  li {
-    display: inline-block;
-  }
+	li {
+		display: inline-block;
+	}
 }
 
 /* Authors */
-
 .authors {
-  li {
-    margin-bottom: 12px;
-  }
+	li {
+		margin-bottom: 12px;
+	}
 }
 
 /* Post */
-
 .post {
-  display: none;
-  &.active {
-    display: block;
-  }
+	position: absolute;
+	display: block;
+	opacity: 0;
+	transition: 0.5s;
+	z-index: 1;
+	text-align: justify;
+	&.active {
+		position: relative;
+		opacity: 1;
+		z-index: 2;
+	}
+}
+.post-title {
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
+	font-size: 1.5em;
+	color: $color-red;
 }
 
 .post-author {
-  font-style: italic;
+	font-style: italic;
 }
 
 .post-tags {
-  display: flex;
-  p {
-    margin: 0 10px 0 0;
-  }
+	display: flex;
+	color: $color-red;
+	p {
+		margin: 0 10px 0 0;
+	}
+}
+
+//Tags&Authors in side bar
+
+.sidebar {
+	.tags,
+	.authors {
+		font-family: $font-logo;
+		display: inline;
+		.tag-size-5 {
+			font-size: 2.5em;
+			color: black;
+		}
+		.tag-size-4 {
+			font-size: 2em;
+			color: yellow;
+		}
+		.tag-size-3 {
+			font-size: 1.5em;
+			color: violet;
+		}
+		.tag-size-2 {
+			font-size: 1em;
+			color: green;
+		}
+		.tag-size-1 {
+			font-size: 0.5em;
+			color: pink;
+		}
+	}
+	.authors {
+		font-family: $font-logo;
+		display: inline;
+		.tag-size-5 {
+			font-size: 2.5em;
+			color: black;
+		}
+		.tag-size-1 {
+			font-size: 0.5em;
+			color: pink;
+		}
+	}
+}
+
+//RWD
+@media (min-width: 768px) and (max-width: 991px) {
+	.head {
+		.logo {
+			font-size: 4em;
+		}
+	}
+	.sidebar,
+	.posts {
+		padding: 20px;
+	}
+	.posts {
+		flex: 3 0 0;
+	}
+}
+
+@media (max-width: 767px) {
+	.head {
+		.logo {
+			font-size: 2em;
+		}
+	}
+	.wrapper {
+		flex-direction: column;
+		.articles {
+			padding: 10px;
+			padding-bottom: 20px;
+			margin-bottom: 5px;
+			h2 {
+				text-align: center;
+			}
+			ul {
+				li {
+					display: inline-block;
+					width: 100px;
+					padding: 0 12px;
+					border: 2px solid $color-border;
+					text-align: center;
+				}
+			}
+		}
+		.posts {
+			flex: 1;
+			padding: 25px;
+			margin-bottom: 5px;
+		}
+		.tag {
+			padding: 10px;
+			padding-left: 25px;
+			display: flex;
+			.row {
+				flex: 1;
+				justify-content: space-around;
+				.authors {
+					li {
+						margin: 0;
+						letter-spacing: initial;
+					}
+				}
+			}
+		}
+	}
 }
